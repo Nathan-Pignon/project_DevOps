@@ -23,7 +23,7 @@ jobs:
     - name: Npm install
       run: npm install
     - run: npm run test
-    - run: echo "Fin"
+    - run: echo "Fin du test"
 
   sonarcloud:
     runs-on: ubuntu-latest
