@@ -5,29 +5,18 @@ on:
     branches: [ master ]
 
 jobs:
-  dependencies:
 
+  unit_tests:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [14.x]
-
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
       with:
         node-version: 14
     - run: npm ci
-    - run: echo "End depencencies"
-
-  unit_tests:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 14
     - run: npm run test
     - run: echo "End unit tests"
 
@@ -73,3 +62,8 @@ jobs:
         with:
           sarif_file: 'trivy-results.sarif'
       - run: echo "End security tests"
+
+  finish:
+    runs-on: ubuntu-latest
+    steps:
+      run: echo "Pipeline finished"
