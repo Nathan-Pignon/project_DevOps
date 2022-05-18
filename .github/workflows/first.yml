@@ -38,7 +38,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       with:
-        projectBaseDir: /github/workspace/project_DevOps
+        projectBaseDir: Nathan-Pignon/project_DevOps
         args: >
           -Dsonar.organization=Nathan-Pignon
           -Dsonar.projectKey=Nathan-Pignon_project_DevOps
