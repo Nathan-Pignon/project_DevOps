@@ -1,10 +1,7 @@
-# project_DevOps
+# Project DevOps - Maxime MARTIN & Nathan PIGNON
 
-first : clone the project
-
-second : cd project_DevOps puis npm i
-
-thrid : launch test unit with npm run test 
+Environnement de dev : https://tpdevopsdev.web.app/
+Environnement de prod : https://tpdevopsprod.web.app/
 
 
 AIDE POUR GITHUB : https://github.blog/2022-02-02-build-ci-cd-pipeline-github-actions-four-steps/
