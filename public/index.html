@@ -4,13 +4,28 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TP DevOps</title>
-
+    <style>
+      .header, .credits{margin-top:50px;display: flex;flex-direction:column;justify-content: center;align-items: center;}
+      .links{margin-top:50px;display: flex;justify-content: space-around;align-items: center;}
+    </style>
   </head>
   <body>
     
     <div class="header">
       <h1>TP DevOps CI/CD</h1>
       <h2 id="current-env-title"></h2>
+    </div>
+
+    <div class="links">
+      <a href="https://tpdevopsprod.web.app/">Go to Production server</a>
+      <a href="https://tpdevopsdev.web.app/">Go to Development server</a>
+      <a href="https://github.com/Nathan-Pignon/project_DevOps">Go to Github repository</a>
+    </div>
+
+    <div class="credits">
+      <p>Nathan PIGNON</p>
+      <p>Maxime MARTIN</p>
+      <p>B3 Dev Nantes</p>
     </div>
     <script>
       let env = window.location.href.includes('tpdevopsdev') ? "Development" : window.location.href.includes('file:/') ? "Local" : "Production";
