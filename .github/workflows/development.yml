@@ -5,14 +5,13 @@ on:
     branches: [ master ]
 
 jobs:
-  build_dev:
+  node:
 
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [14.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v3
@@ -20,25 +19,16 @@ jobs:
       with:
         node-version: 14
     - run: npm ci
-    - name: Npm install
-      run: npm install
-    - name: Run Trivy vulnerability scanner in repo mode
-      uses: aquasecurity/trivy-action@master
-      with:
-        scan-type: 'fs'
-        ignore-unfixed: true
-        format: 'sarif'
-        output: 'trivy-results.sarif'
-        severity: 'CRITICAL'
+    - run: echo "Fin du test"
 
-    - name: Upload Trivy scan results to GitHub Security tab
-      uses: github/codeql-action/upload-sarif@v1
-      with:
-        sarif_file: 'trivy-results.sarif'
+  unit_tests:
+    runs-on: ubuntu-latest
+    steps:
     - run: npm run test
     - run: echo "Fin du test"
 
-  sonarcloud:
+
+  quality_tests:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -54,3 +44,21 @@ jobs:
         args: >
           -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
           -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+    
+  
+  security_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Trivy vulnerability scanner in repo mode
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          ignore-unfixed: true
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          severity: 'CRITICAL'
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: 'trivy-results.sarif'
