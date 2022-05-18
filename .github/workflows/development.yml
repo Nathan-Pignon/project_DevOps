@@ -79,7 +79,7 @@ jobs:
       - name: Deploy to Firebase Firestore Rules
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only firestore:rules, hosting
+          args: deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN_DEV }}
       - run: echo "End deploy"
