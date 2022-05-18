@@ -75,13 +75,14 @@ jobs:
     runs-on: ubuntu-latest
     #needs: build
     steps:
-      - run: curl -sL https://firebase.tools | bash
-      - name: Deploy to Firebase Firestore Rules
-        uses: w9jds/firebase-action@master
+      - uses: actions/checkout@v3
+      - run: npm ci
+      - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          args: deploy --only hosting
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN_DEV }}
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_DEV }}"
+          projectId: tpdevopsdev
+          channelId: live
       - run: echo "End deploy"
 
   discord_notification:
