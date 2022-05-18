@@ -68,7 +68,7 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: dist
-          path: dist
+          path: 
       - name: Download Artifact
         uses: actions/download-artifact@main
         with:
