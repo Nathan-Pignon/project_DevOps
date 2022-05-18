@@ -13,8 +13,8 @@
       <h2 id="current-env-title"></h2>
     </div>
     <script>
-      let env = window.location.href.include('tpdevopsdev') ? "Development" : "Production";
-      document.getElementById('current-env-title').innerText("Environnement : " + env);
+      let env = window.location.href.includes('tpdevopsdev') ? "Development" : window.location.href.includes('file:/') ? "Local" : "Production";
+      document.getElementById('current-env-title').append("Environnement : " + env);
     </script>
   </body>
 </html>
