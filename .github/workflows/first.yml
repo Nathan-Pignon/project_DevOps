@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [14.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -22,9 +22,6 @@ jobs:
     - run: npm ci
     - name: Npm install
       run: npm install
-    - name: Checkout code
-      uses: actions/checkout@v2
-
     - name: Run Trivy vulnerability scanner in repo mode
       uses: aquasecurity/trivy-action@master
       with:
