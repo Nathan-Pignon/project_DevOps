@@ -3,10 +3,18 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TP DevOps Dev</title>
+    <title>TP DevOps</title>
 
   </head>
   <body>
-    <h1>Vous êtes sur l'environnement de Dev du TP DevOps CI/CD</h1>
+    
+    <div class="header">
+      <h1>TP DevOps CI/CD</h1>
+      <h2 id="current-env-title"></h2>
+    </div>
+    <script>
+      let env = window.location.href.include('tpdevopsdev') ? "Development" : "Production";
+      document.getElementById('current-env-title').innerText("Environnement : " + env);
+    </script>
   </body>
 </html>
