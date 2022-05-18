@@ -68,12 +68,12 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: dist
-          path: 
+          path: .
       - name: Download Artifact
         uses: actions/download-artifact@main
         with:
           name: dist
-          path: 
+          path: .
       - run: echo "End build"
 
   discord_notification:
